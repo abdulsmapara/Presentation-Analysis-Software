@@ -1,0 +1,291 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>PRESENTATION ANALYSIS TOOL</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700" rel="stylesheet">
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="css/magnific-popup.css">
+
+	<!-- Owl Carousel  -->
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+	<!-- Flexslider  -->
+	<link rel="stylesheet" href="css/flexslider.css">
+	<!-- Flaticons  -->
+	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+	<script type="text/javascript" src="js/app.js"></script>
+	</head>
+	<body>
+		
+	<div class="colorlib-loader"></div>
+	
+	<div id="page">
+	<nav class="colorlib-nav" role="navigation">
+		<div class="top-menu">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2">
+						<div id="colorlib-logo"><a href="index.html">Presentation<span>Analysis</span>TOOL</a></div>
+					</div>
+					<div class="col-md-10 text-right menu-1">
+						<ul>
+							<li class=""><a href="/">Home</a></li>
+							<li class=""><a href="/courses">Courses</a></li>
+							<li><a href="/practice">Practice</a></li>
+
+							<li class="btn-cta"><span class="btn btn-primary"><%= whoami %></span></li>
+							<li class="btn-cta"><a href="/logoutDB"><span class="" style="color: black">Log Out</span></a></li>
+							
+						</ul>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</nav>
+
+	<div id="colorlib-blog">
+		
+				<center><h1>PRACTICE YOUR PRESENTATION WITH OUR PRODUCT</h1></center><br />
+		<div class="container">
+
+			<div class="row">
+				<div class="col-lg-2 col-md-2"></div>
+				<div class="col-lg-8 col-md-8">
+					<div class="colorlib-blog animate-box">
+						<!--<form action="/analysePresentation" method="post" enctype="multipart/form-data">
+						<center><label>UPLOAD YOUR PRESENTATION VIDEO</label></center>
+						<center><input type="file" name="video[]" required/></center><br />
+						<center><input type="submit" name="" value="ANALYSE MY PRESENTATION" class="btn btn-success"></center>
+						</form><br />-->
+
+						<center><button class="btn-primary" onclick="callme('<%=whoami%>');">START YOUR PRESENTATION</button></center><br />
+						      <div style="color: black;" class="two-thirds box analytics">
+					            <div class="paper" id="paper" contenteditable>
+
+					            </div>
+					          </div>
+					          <div id="analyticsCount" style="color: black;"></div>
+								
+							  </div>
+							</div>
+						<center><video id="myVideo" autoplay="false"></video></center>
+
+<script>
+function callme(name){
+	startSpeech(name);
+const constraints = {
+  video: true
+};
+
+const video = document.querySelector('video');
+
+navigator.mediaDevices.getUserMedia(constraints).
+  then((stream) => {video.srcObject = stream});
+  const hdConstraints = {
+  video: {width: {min: 1280}, height: {min: 720}}
+};
+
+navigator.mediaDevices.getUserMedia(hdConstraints).
+  then((stream) => {video.srcObject = stream});
+
+const vgaConstraints = {
+  video: {width: {exact: 640}, height: {exact: 480}}
+};
+
+navigator.mediaDevices.getUserMedia(vgaConstraints).
+  then((stream) => {video.srcObject = stream});
+const videoElement = document.querySelector('video');
+const videoSelect = document.querySelector('select#videoSource');
+
+}
+function getStream() {
+  if (window.stream) {
+    window.stream.getTracks().forEach(function(track) {
+      track.stop();
+    });
+  }
+
+  const constraints = {
+    audio: {
+      deviceId: {exact: audioSelect.value}
+    },
+    video: {
+      deviceId: {exact: videoSelect.value}
+    }
+  };
+
+  navigator.mediaDevices.getUserMedia(constraints).
+    then(gotStream).catch(handleError);
+}
+
+function gotStream(stream) {
+  window.stream = stream; // make stream available to console
+  videoElement.srcObject = stream;
+}
+
+function handleError(error) {
+  console.error('Error: ', error);
+}
+</script>
+			</div>
+		</div>
+	</div>
+	
+	<div id="colorlib-blog">
+		
+				<center><h1>EXPLORE OUR CUSTOMIZED COURSES</h1></center><br />
+		<div class="container">
+
+			<div class="row">
+				<div class="col-lg-6 col-md-6">
+					<div class="colorlib-blog animate-box">
+						<a href="#"><img class="img-responsive" src="images/blog-1.jpg" alt=""></a>
+						<div class="blog-text">
+							<h3><a href="#">HAND GESTURES</a></h3>
+							<p class="meta"><span>Jan 5, 2017</span></p>
+							<p>HAND GESTURES FORM AN ESSENTIAL PART IN PRESENTATION.</p>
+							<a href="#" class="btn btn-primary">Read More <i class="icon-arrow-right"></i></a>
+						</div> 
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<div class="colorlib-blog animate-box">
+						<a href="#"><img class="img-responsive" src="images/blog-2.jpg" alt=""></a>
+						<div class="blog-text">
+							<h3><a href="#">FILLER WORDS</a></h3>
+							<p class="meta"><span>Jan 5, 2017</span> | <span>3 Comments</span></p>
+							<p>FILLER WORDS (you know,um,like,etc) tend to annoy the audience,so these need to be avoided.</p>
+							<a href="#" class="btn btn-primary">Read More <i class="icon-arrow-right"></i></a>
+						</div> 
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+	
+	<footer id="colorlib-footer" role="contentinfo">
+		<div class="container">
+			<div class="row row-pb-md">
+				<div class="col-md-3 colorlib-widget">
+					<h4>PAT</h4>
+					<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
+				</div>
+				<div class="col-md-3 col-md-push-1">
+					<h4>Navigation</h4>
+					<ul class="colorlib-footer-links">
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Practice Areas</a></li>
+						<li><a href="#">Won Cases</a></li>
+						<li><a href="#">Blog</a></li>
+						<li><a href="#">About us</a></li>
+					</ul>
+				</div>
+
+				<div class="col-md-3 col-md-push-1">
+					<h4>Contact Information</h4>
+					<ul class="colorlib-footer-links">
+						<li>198 West 21th Street, <br> Suite 721 New York NY 10016</li>
+						<li><a href="tel://1234567920">+ 1235 2355 98</a></li>
+						<li><a href="mailto:info@yoursite.com">info@yoursite.com</a></li>
+					</ul>
+				</div>
+
+				<div class="col-md-3 col-md-push-1">
+					<h4>Opening Hours</h4>
+					<ul class="colorlib-footer-links">
+						<li>Mon - Thu: 9:00 - 21 00</li>
+						<li>Fri 8:00 - 21 00</li>
+						<li>Sat 9:30 - 15: 00</li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="row copyright">
+				<div class="col-md-12 text-center">
+					<p>
+					<small class="block">&copy; 2018 LawFirm. All Rights Reserved. Created by <a href="https://colorlib.com/" target="_blank">Colorlib</a></small> 
+					<small class="block">Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a></small>
+					</p>
+					<p>
+						<ul class="colorlib-social-icons">
+							<li><a href="#"><i class="icon-twitter"></i></a></li>
+							<li><a href="#"><i class="icon-facebook"></i></a></li>
+							<li><a href="#"><i class="icon-linkedin"></i></a></li>
+							<li><a href="#"><i class="icon-dribbble"></i></a></li>
+						</ul>
+					</p>
+				</div>
+			</div>
+
+		</div>
+	</footer>
+	</div>
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+	</div>
+	
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Stellar Parallax -->
+	<script src="js/jquery.stellar.min.js"></script>
+	<!-- Carousel -->
+	<script src="js/owl.carousel.min.js"></script>
+	<!-- Flexslider -->
+	<script src="js/jquery.flexslider-min.js"></script>
+	<!-- countTo -->
+	<script src="js/jquery.countTo.js"></script>
+	<!-- Magnific Popup -->
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/magnific-popup-options.js"></script>
+	<!-- Main -->
+	<script src="js/main.js"></script>
+
+	</body>
+</html>
+

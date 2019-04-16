@@ -1,0 +1,334 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Presentation Analysis Tool</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+
+  <!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700" rel="stylesheet">
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="css/magnific-popup.css">
+
+	<!-- Owl Carousel  -->
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+	<!-- Flexslider  -->
+	<link rel="stylesheet" href="css/flexslider.css">
+	<!-- Flaticons  -->
+	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+	</head>
+	<body>
+<% if (message != "none"){ %>
+<div id="message_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <center><h4 class="modal-title">MESSAGE</h4></center>
+      </div>
+      <div class="modal-body">
+
+      		<p style="color: black"><%= message %></p>
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<% } %>
+
+	<div id="loginForm" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <center><h4 class="modal-title">SIGN IN</h4></center>
+      </div>
+      <div class="modal-body">
+
+      		<form action="/loginDB" method="post" name="myForm">
+                        <div class="form-group">
+                        <input class="form-control" name="myUsername" ng-model="username" type="text" pattern="[a-zA-Z0-9]{2,50}" placeholder="Username" required="true"><br />
+                        
+                        <input class="form-control" type="password" name="myPassword" ng-model="password" pattern="[a-zA-Z0-9]{2,50}"  placeholder="Enter your Password" required="true" myPasswordDirective>
+                        <br />
+                        <label>I am:</label>
+                        <select class="form-control" name="myType" ng-model="type">
+                        	<option value="Student">Student</option>
+                        	<option value="Professional">Professional</option>
+                        	<option value="Other">Other</option>
+                        </select>
+                        
+                        <center><input type="submit" value="Log In" class="btn btn-primary mb-2"><br>
+                        </div>
+                    </form>
+                    <br />
+
+    <center>
+        <h4 style="color: darkred">Don't have an account? <button class="btn btn-primary btn-sm" data-dismiss="modal" data-toggle="modal" data-target="#register_modal">Create one</a></button></h4>
+    
+    </center>
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+<!--Register Modal-->
+<div id="register_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <center><h4 class="modal-title">Register</h4></center>
+      </div>
+      <div class="modal-body">
+
+      		<form action="/registerDB" method="post" name="reg_form" >
+                        <div class="form-group">
+
+                        <input class="form-control" name="myName" ng-model="name" type="text" placeholder="Your Name" required="true"><br />
+                        
+                        <input class="form-control" name="myEmail" ng-model="email" type="email" placeholder="Your Email ID" required="true"><br />
+                        
+
+                        <input class="form-control" name="myUsername" ng-model="username" type="text" pattern="[a-zA-Z0-9]{2,50}" placeholder="Choose a Username" required="true"><br />
+                        
+                        <input class="form-control" type="password" name="myPassword" ng-model="password" pattern="[a-zA-Z0-9]{2,50}" placeholder="Choose your Password(Alphanumeric, no special characters)" required="true">
+                        <br />
+                        <label>Register as a :</label>
+                        <select class="form-control" name="myType" ng-model="type">
+                        	<option value="Student">Student</option>
+                        	<option value="Professional">Professional</option>
+                        	<option value="Other">Other</option>
+                        </select>
+                        <center><input type="submit" value="Register" class="btn btn-primary mb-2"></center>
+                        </div>
+                    </form>
+                    <br />
+
+    <center>
+               <h4>Already have an account ? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#loginForm">Log In</a></h4>
+    </center>
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+     </div>
+     </div>
+     </div>
+    
+
+		
+	<div class="colorlib-loader"></div>
+	
+	<div id="page">
+	<nav class="colorlib-nav" role="navigation">
+		<div class="top-menu">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2">
+						<div id="colorlib-logo"><a href="index.html">Presentation<span>Analysis</span>Tool</a></div>
+					</div>
+					<div class="col-md-10 text-right menu-1">
+						<ul>
+							<li class="active"><a href="/">Home</a></li>
+							<li><a href="practice.html">Practice</a></li>
+							<li><a href="won.html">Courses</a></li>
+
+							<li class="btn-cta"><button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#loginForm"><span>GET STARTED</span></button></li>
+							<!-- <li class="btn-cta"><a href="#"><span>Sign Up</span></a></li> -->
+						</ul>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</nav>
+
+	<aside id="colorlib-hero" class="js-fullheight">
+		<div class="flexslider js-fullheight">
+			<ul class="slides">
+		   	<li style="background-image: url(images/img_bg_2.jpg);">
+		   		<div class="overlay-gradient"></div>
+		   		<div class="container">
+		   			<div class="row">
+			   			<div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
+			   				<div class="slider-text-inner">
+			   					<h1 style="color: yellow">Are you eager to deliver an <span style="color: yellow">effective presentation</span> in the near future ?</h2>
+			   						<h2 style="font-size: 23px;color: white">If yes, then you have come to the right place, where we have an ambition to help everyone become a great public speaker.</h2>
+									<p><button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#loginForm">GET STARTED NOW</button></p>
+			   				</div>
+			   			</div>
+			   		</div>
+		   		</div>
+		   	</li>
+		   	</ul>
+	  	</div>
+	</aside>
+	<div id="intro-bg">
+		<div class="container">
+			<div id="colorlib-intro">
+				<div class="third-col">
+					<span class="icon"><i class="icon-cog"></i></span>
+					<h2>Explore our courses.</h2>
+					<p>The rich variety of courses customized on the basis of your profession are now available to make you a better public speaker.</p>
+				</div>
+				<div class="third-col third-col-color">
+					<span class="icon"><i class="icon-old-phone"></i></span>
+					<h2>Need help ?</h2>
+					<h2>Email us @ <a href="#">ebola_pat@codeingzone.in</a></h2>
+					<p>Feel free to reach out our team for clarifications or providing feedbacks.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer id="colorlib-footer" role="contentinfo">
+		<div class="container">
+			<div class="row row-pb-md">
+				<div class="col-md-3 colorlib-widget">
+					<h4>PAT</h4>
+					<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
+				</div>
+				<div class="col-md-3 col-md-push-1">
+					<h4>Navigation</h4>
+					<ul class="colorlib-footer-links">
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Practice Areas</a></li>
+						<li><a href="#">Won Cases</a></li>
+						<li><a href="#">Blog</a></li>
+						<li><a href="#">About us</a></li>
+					</ul>
+				</div>
+
+				<div class="col-md-3 col-md-push-1">
+					<h4>Contact Information</h4>
+					<ul class="colorlib-footer-links">
+						<li>198 West 21th Street, <br> Suite 721 New York NY 10016</li>
+						<li><a href="tel://1234567920">+ 1235 2355 98</a></li>
+						<li><a href="mailto:info@yoursite.com">info@yoursite.com</a></li>
+					</ul>
+				</div>
+
+				<div class="col-md-3 col-md-push-1">
+					<h4>Opening Hours</h4>
+					<ul class="colorlib-footer-links">
+						<li>Mon - Thu: 9:00 - 21 00</li>
+						<li>Fri 8:00 - 21 00</li>
+						<li>Sat 9:30 - 15: 00</li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="row copyright">
+				<div class="col-md-12 text-center">
+					<p>
+					<small class="block">&copy; 2018 LawFirm. All Rights Reserved. Created by <a href="https://colorlib.com/" target="_blank">Colorlib</a></small> 
+					<small class="block">Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a></small>
+					</p>
+					<p>
+						<ul class="colorlib-social-icons">
+							<li><a href="#"><i class="icon-twitter"></i></a></li>
+							<li><a href="#"><i class="icon-facebook"></i></a></li>
+							<li><a href="#"><i class="icon-linkedin"></i></a></li>
+							<li><a href="#"><i class="icon-dribbble"></i></a></li>
+						</ul>
+					</p>
+				</div>
+			</div>
+
+		</div>
+	</footer>
+	</div>
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+	</div>
+	
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Stellar Parallax -->
+	<script src="js/jquery.stellar.min.js"></script>
+	<!-- Carousel -->
+	<script src="js/owl.carousel.min.js"></script>
+	<!-- Flexslider -->
+	<script src="js/jquery.flexslider-min.js"></script>
+	<!-- countTo -->
+	<script src="js/jquery.countTo.js"></script>
+	<!-- Magnific Popup -->
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/magnific-popup-options.js"></script>
+	<!-- Main -->
+	<script src="js/main.js"></script>
+	<script type="text/javascript">
+			 
+			 $(window).load(function(){
+			   $('#message_modal').modal('show');
+			    }); 
+		</script>
+	</body>
+</html>
+
